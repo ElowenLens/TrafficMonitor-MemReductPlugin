@@ -125,7 +125,7 @@ private:
     //配置
     std::wstring m_config_dir;
     std::wstring m_config_file;
-    unsigned m_clean_mask = 0xFFFF;             //默认全部勾选
+    unsigned m_clean_mask = 0x1C;               //默认勾选：备用列表、低优先级备用页、系统文件缓存
     ResultMode m_result_mode = RM_ITEM;
     int m_result_hold_seconds = 5;              //释放量显示保持时长（秒）
     bool m_auto_enable = false;

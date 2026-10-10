@@ -217,7 +217,7 @@ void CPluginMain::LoadConfig()
     if (m_config_file.empty())
         return;
     const wchar_t* file = m_config_file.c_str();
-    m_clean_mask = (unsigned)::GetPrivateProfileIntW(L"config", L"clean_mask", 0x1F, file);
+    m_clean_mask = (unsigned)::GetPrivateProfileIntW(L"config", L"clean_mask", 0x1C, file);
     m_result_mode = (ResultMode)::GetPrivateProfileIntW(L"config", L"result_mode", RM_ITEM, file);
     if (m_result_mode < RM_ITEM || m_result_mode > RM_NONE)
         m_result_mode = RM_ITEM;
