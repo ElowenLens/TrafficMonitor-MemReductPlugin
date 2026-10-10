@@ -1,0 +1,98 @@
+﻿// MemReductPlugin.rc - 内存整理插件资源文件
+// 包含：插件图标、中文选项设置对话框、版本信息
+#include <winres.h>
+#include "resource.h"
+
+/////////////////////////////////////////////////////////////////////////////
+// 图标
+IDI_PLUGIN              ICON                    "plugin.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+// 中文选项设置对话框
+//
+IDD_OPTIONS DIALOGEX 0, 0, 260, 238
+STYLE DS_SETFONT | DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "内存整理 - 选项设置"
+FONT 9, "Microsoft YaHei UI", 400, 0, 0x86
+BEGIN
+    GROUPBOX        "要释放的项目",IDC_STATIC,7,4,246,84
+    CONTROL         "系统工作集",IDC_CHK_SYSTEM_WS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,15,16,110,10
+    CONTROL         "所有进程的工作集",IDC_CHK_PROCESS_WS,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,15,30,110,10
+    CONTROL         "备用列表",IDC_CHK_STANDBY,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,15,44,110,10
+    CONTROL         "低优先级备用页（优先级0）",IDC_CHK_STANDBY_LOW,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,15,58,140,10
+    CONTROL         "系统文件缓存",IDC_CHK_FILECACHE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,15,72,110,10
+
+    GROUPBOX        "整理结果显示方式",IDC_STATIC,7,92,246,60
+    CONTROL         "显示在插件显示项中（默认）",IDC_RADIO_RESULT_ITEM,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,15,104,150,10
+    CONTROL         "同时弹出主程序通知消息",IDC_RADIO_RESULT_NOTIFY,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,15,118,150,10
+    CONTROL         "不显示整理结果",IDC_RADIO_RESULT_NONE,"Button",BS_AUTORADIOBUTTON | WS_TABSTOP,170,110,80,10
+    LTEXT           "释放量保持",IDC_STATIC,15,132,42,10
+    EDITTEXT        IDC_EDIT_HOLD,60,130,28,12,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "秒后自动恢复为内存占用",IDC_STATIC,92,132,100,10
+
+    GROUPBOX        "自动整理",IDC_STATIC,7,156,246,52
+    CONTROL         "启用自动整理（需以管理员身份运行）",IDC_CHK_AUTO_ENABLE,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,15,168,210,10
+    LTEXT           "内存占用超过",IDC_STATIC_THRESHOLD,15,184,45,10
+    EDITTEXT        IDC_EDIT_THRESHOLD,62,182,24,12,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "% 时触发；两次整理至少间隔",IDC_STATIC_INTERVAL,90,184,108,10
+    EDITTEXT        IDC_EDIT_INTERVAL,200,182,24,12,ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "分钟",IDC_STATIC,228,184,20,10
+
+    PUSHBUTTON      "立即整理（测试）",IDC_BTN_CLEAN_NOW,7,219,90,14
+    DEFPUSHBUTTON   "确定",IDOK,150,219,48,14
+    PUSHBUTTON      "取消",IDCANCEL,204,219,48,14
+END
+
+/////////////////////////////////////////////////////////////////////////////
+// 版本信息（简体中文）
+//
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGN_INFO
+BEGIN
+    IDD_OPTIONS, DIALOG
+BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 253
+        TOPMARGIN, 4
+        BOTTOMMARGIN, 219
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,0
+ PRODUCTVERSION 1,0,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404b0"
+        BEGIN
+            VALUE "FileDescription", "TrafficMonitor 内存整理插件"
+            VALUE "FileVersion", "1.0.0.0"
+            VALUE "InternalName", "MemReductPlugin"
+            VALUE "LegalCopyright", "Copyright (C) 2026"
+            VALUE "OriginalFilename", "MemReductPlugin.dll"
+            VALUE "ProductName", "TrafficMonitor 内存整理插件"
+            VALUE "ProductVersion", "1.0.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
+

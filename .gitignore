@@ -1,0 +1,21 @@
+# 编译产物
+bin/
+*.obj
+*.pdb
+*.ilk
+*.idb
+*.res
+*.log
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.ncb
+*.opendb
+*.db
+*.sdf
+
+# 系统文件
+Thumbs.db
+Desktop.ini
